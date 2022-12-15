@@ -1,0 +1,26 @@
+<!-- <div class="card" style="width: 18rem;">
+    <ng-container *ngFor="let item of productList">
+    <img class="card-img-top" src="..." alt="Card image cap">
+    <div class="card-body">
+      <h5 class="card-title">Card title</h5>
+      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+      <a href="#" class="btn btn-primary">Go somewhere</a>
+    </div></ng-container>
+  </div> -->
+
+
+<div class="div container">
+    <div class="div row">
+        <ng-container *ngFor="let item of productList | filter:searchKey:'title'">
+            <div class="card col-md-3">
+                <img src="{{item.image}}" alt="">
+                <h5 style="white-space:nowrap;overflow:hidden;text-overflow: ellipsis;max-width: 100ch;">{{item.title}}</h5>
+                <p style="white-space:nowrap;overflow:hidden;text-overflow: ellipsis;max-width: 100ch;">{{item.description}}</p>
+                <p><b>Price:</b>${{item.price}}</p>
+                <button class="btn btn-primary" (click)=addtoCart(item)>Add to cart</button>
+            </div>
+        </ng-container>
+
+    </div>
+</div>
+

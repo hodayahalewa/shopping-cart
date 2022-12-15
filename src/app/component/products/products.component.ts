@@ -28,7 +28,9 @@ ngOnInit(): void {
 
     });
 
-
+this.cartService.search.subscribe((val:any)=>{
+  this.searchKey=val;
+})
   }
   addtoCart(item:any){
 this.cartService.addToCart(item);

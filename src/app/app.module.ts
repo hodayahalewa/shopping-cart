@@ -9,6 +9,7 @@ import{HttpClientModule} from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.modul';
 import { HandleErrorComponent } from './component/handle-error/handle-error.component';
 import { FilterPipe } from './shared/filter.pipe';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     AppComponent,
@@ -21,7 +22,9 @@ import { FilterPipe } from './shared/filter.pipe';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

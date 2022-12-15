@@ -19,9 +19,10 @@ export class HeaderComponent implements OnInit{
     this.totalItem=res.length;
     })
   }
-  serchc(event:any){
-this.searchTerm=(event.target as HTMLInputElement).value;
-console.log(this.searchTerm );
+  search(event:any){
+    this.searchTerm=(event.target as HTMLInputElement).value;
+    console.log(this.searchTerm );
+    this.cartService.search.next(this.searchTerm);
 
   }
 

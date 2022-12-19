@@ -13,6 +13,12 @@
 h4,h6{
     font-weight: 400;
 }
+.col-sm-8 {
+    flex: 0 0 auto;
+    width: 66.66666667%;
+    margin-top: 3%;
+    margin-left: 10%;
+}
 .card-table{
      position: relative;
      display: flex;
@@ -31,3 +37,21 @@ h4,h6{
  padding: 12px 72px;
  border-radius: 3px !important;
 }
+.btnQuantity{
+    background-color: rgb(94,0,0);
+    border-radius: 50%;
+    font-size: 16px;
+    color: #fff;
+    margin: 0 8px;
+
+}
+.product-summery{
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: .25rem;
+    height: 300px;
+    width: 350px;
+    margin: 20%;
+    padding: 24px;
+
+}
+

@@ -33,7 +33,7 @@ this.cartService.search.subscribe((val:any)=>{
 })
   }
   addtoCart(item:any){
-this.cartService.addToCart(item);
+    this.cartService.addToCart(item);
   }
 
 }

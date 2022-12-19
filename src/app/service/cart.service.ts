@@ -23,7 +23,7 @@ public search=new BehaviorSubject<string>("");
     this.productList.next(this.cartItemList);
     this.getTotalPrice();
     console.log("this.cartItemList",this.cartItemList);
-
+    localStorage.setItem('localCart',JSON.stringify(product))
   }
   getTotalPrice():number{
     let grandTotal=0;
@@ -32,7 +32,7 @@ public search=new BehaviorSubject<string>("");
     })
     console.log("grandTotal:",grandTotal);
 
-    return grandTotal;
+    return parseFloat(grandTotal.toFixed(2));
   }
   removeCartItem(product:any){
     this.cartItemList.map((productItem:any,index:any)=>{

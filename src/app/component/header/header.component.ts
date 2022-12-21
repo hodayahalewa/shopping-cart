@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { CartService } from 'src/app/service/cart.service';
 import { CartComponent } from '../cart/cart.component';
 
@@ -8,16 +8,21 @@ import { CartComponent } from '../cart/cart.component';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit{
+  @Input() totalItem:number=0;
   errorMsg:string | undefined;
-  public totalItem:number=0;
+  //public totalItem:number=0;
   public searchTerm:string='';
+
   constructor(private cartService:CartService){
 
   }
   ngOnInit(): void {
-    this.cartService.getProduct().subscribe(res=>{
-    this.totalItem=res.length;
+    this.cartService.cartItem.subscribe(res=>{
+      this.totalItem=res;
     })
+    // this.cartService.getProduct().subscribe(res=>{
+    //  this.totalItem=res.length;
+    // })
   }
   search(event:any){
     this.searchTerm=(event.target as HTMLInputElement).value;

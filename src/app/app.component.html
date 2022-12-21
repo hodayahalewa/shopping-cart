@@ -1,4 +1,4 @@
 <app-handle-error *ngIf="errorMassage" [errorMsg]="error"></app-handle-error>
 
-<app-header *ngIf="errorMassage==false"></app-header>
+<app-header *ngIf="errorMassage==false" [totalItem]="totalItem"></app-header>
 <router-outlet *ngIf="errorMassage==false"></router-outlet>

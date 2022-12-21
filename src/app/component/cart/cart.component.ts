@@ -7,57 +7,45 @@ import { CartService } from 'src/app/service/cart.service';
   styleUrls: ['./cart.component.scss']
 })
 export class CartComponent implements OnInit{
-  public product:any=[];
+  public products:any=[];
   public grandTotal !:number;
   public shippingValue:number=30;
   constructor(private cartService:CartService){
 
   }
   ngOnInit(): void {
-    this.cartService.getProduct().subscribe(res=>{
-      this.product=res;
-      console.log(this.product);
-      this.grandTotal=this.cartService.getTotalPrice();
-    });
-    if(this.product.length>4)
+   if(localStorage.getItem('localCart')){
+      this.products=JSON.parse(localStorage.getItem('localCart')||'{}');
+    }
+    else{
+      this.products=[];
+    }
+
+
+    this.grandTotal=this.cartService.getTotalPrice();
+    if(this.products.length>4)
       this.shippingValue+=15;
   }
 
 
   removeItem(item:any){
     this.cartService.removeCartItem(item);
+    this.products= JSON.parse(localStorage.getItem('localCart')||'{}');
   }
   emtycart(){
     this.cartService.removeAllItem();
+    this.products= [];
+
   }
 
   incQnt(productItem:any){
-    this.product.forEach((element:any) => {
-      if(productItem.id==element.id){
-        if(productItem.Quantity!=5){
-          element.Quantity++;
-          element.Total+=parseFloat(element.price.toFixed(2));
-          this.grandTotal=this.cartService.getTotalPrice();
-        }
-      }
-      //localstorage-setitem('),json.strin
-    });
+    this.grandTotal=this.cartService.incQnt(productItem);
+    this.products= JSON.parse(localStorage.getItem('localCart')||'{}');
   }
   decQnt(productItem:any){
-    this.product.forEach((element:any) => {
-      if(productItem.id==element.id){
-        if(productItem.Quantity!=1)
-        {
-          element.Quantity--;
-          element.Total=parseFloat((element.Total-element.price).toFixed(2));
-          this.grandTotal=this.cartService.getTotalPrice();
-        }
-
-      }
-      //localstorage-setitem('),json.strin
-    });
+    this.grandTotal=this.cartService.decQnt(productItem);
+    this.products= JSON.parse(localStorage.getItem('localCart')||'{}');
   }
-  // cartDetail(){
-  //   if(localStorage.getItem('lo'))
-  // }
+
+
 }

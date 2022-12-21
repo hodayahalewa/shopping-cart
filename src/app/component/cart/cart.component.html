@@ -3,7 +3,7 @@
 
 
 
-<ng-container *ngIf="product.length!=0">
+<ng-container *ngIf="products.length!=0">
    <div class="container-fluid">
     <div class="row">
             <div class="col-sm-2">
@@ -19,10 +19,25 @@
                             <span class="col-sm-7"><b>Shipping value:</b></span>
                             <span class="col-sm-5" style="direction: rtl; font-size: larger;"><b >${{shippingValue}}</b></span>
                         </div>
-                    </div>
-                    <div class="check-btn"></div>
-                        <button type="button" class="btn btn-secondary btn-lg" style="margin: 25px;">Chackout now</button>
-                    </div>
+                        <hr>
+                        <div class="row">
+                            <span class="col-sm-7"><h5><b>Final price:</b></h5></span>
+                            <span class="col-sm-5" style="direction: rtl; font-size: larger;"><h5><b >${{shippingValue+grandTotal}}</b></h5></span>
+                        </div>
+
+                        <div class="check-btn"></div>
+                            <button type="button" class="btn btn-secondary btn-lg" style="margin: 25px 0 25px;">Chackout now</button>
+                        </div>
+                        <div style="margin-left: 7%;">
+                            <h4><b>We accept</b></h4>
+                            <div class="bank-img">
+                                <img src="//img.ltwebstatic.com/images2_pi/2018/06/06/15282733431754785346.webp" class="c-img-con-m imgPay">
+                                <img src="//img.ltwebstatic.com/images3_pi/2021/03/09/161528368123dd7a35ad8708b0dfc74b3630526891.webp" class="c-img-con-m imgPay">
+                                <img src="//img.ltwebstatic.com/images2_pi/2018/06/06/15282732803587566708.webp" class="c-img-con-m imgPay">
+                                <img src="//img.ltwebstatic.com/images2_pi/2018/06/06/15282732983375743706.webp" class="c-img-con-m imgPay">
+                            </div>
+                        </div>
+                     </div>
                 </div>
 
 
@@ -43,7 +58,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr *ngFor="let item of product;let i=index">
+                            <tr *ngFor="let item of products;let i=index">
                                 <td>{{i+1}}</td>
                                 <td>{{item.title}}</td>
                                 <td><img style="width: 120px;" src="{{item.image}}" alt=""></td>
@@ -61,7 +76,7 @@
 
                             </tr>
                             <tr>
-                                <td colspan="6"></td>
+                                <td colspan="5"></td>
                                 <td ><button (click)=emtycart() class=" btn btn-danger">Empty Cart</button></td>
                                 <td ><button routerLink="/product" class=" btn btn-primary">Shop More</button></td>
                                 <!-- <td ><button class=" btn btn-success">chackout</button></td> -->
@@ -75,7 +90,7 @@
     </div>
 </div>
 </ng-container>
-<ng-container *ngIf="product.length==0">
+<ng-container *ngIf="products.length==0">
     <div class="div container">
         <div class="card">
             <h5 class="card-titel">My Cart</h5>

@@ -1,6 +1,6 @@
 .card{
     height: 60vh;
-    margin: 25px;
+    //margin: 25px;
     padding: 25px;
 }
 .center{
@@ -13,11 +13,12 @@
 h4,h6{
     font-weight: 400;
 }
-.col-sm-8 {
+.col-sm-9 {
     flex: 0 0 auto;
     width: 66.66666667%;
-    margin-top: 3%;
-    margin-left: 10%;
+    margin: 57px;
+    //margin-top: 3%;
+    //margin-right: 10px;
 }
 .card-table{
      position: relative;
@@ -42,19 +43,19 @@ h4,h6{
     border-radius: 50%;
     font-size: 16px;
     color: #fff;
-    margin: 0 8px;
+   // margin: 0 8px;
 
 }
-.product-summery{
-    border: 1px solid rgba(0, 0, 0, 0.2);
+.card{
     border-radius: .25rem;
-    height: 400px;
-    width: 350px;
-    margin: 20%;
+    margin: 57px;
     padding: 24px;
+    height: 50%;
 
 }
 .imgPay{
     width: 51px;
 }
+
+
 

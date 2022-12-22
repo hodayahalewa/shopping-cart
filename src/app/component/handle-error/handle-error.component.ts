@@ -6,6 +6,7 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./handle-error.component.scss']
 })
 export class HandleErrorComponent {
+  //If there is no internet reception or the loading of the products has failed
 @Input() errorMsg:string | undefined;
 
 }

@@ -5,13 +5,15 @@ import { BehaviorSubject, Subject } from 'rxjs';
   providedIn: 'root'
 })
 export class CartService {
-public cartItemList:any=[];
-public productList=new BehaviorSubject<any>([]);
-public search=new BehaviorSubject<string>("");
-public cartItem=new EventEmitter<number>();
-public grandTotal:number | undefined;
-cartDataNull:any=[];
+  public cartItemList:any=[];
+  public productList=new BehaviorSubject<any>([]);
+  public search=new BehaviorSubject<string>("");
+  public cartItem=new EventEmitter<number>();
+  public grandTotal:number | undefined;
+  cartDataNull:any=[];
+
   constructor() { }
+
   getProduct(){
     return this.productList.asObservable()
   }
@@ -19,7 +21,8 @@ cartDataNull:any=[];
     this.cartItemList.push(...product)
     this.productList.next(product);
   }
-
+  
+  //Adding a product to the cart
   addToCart(product:any){
     var index:number=-1;
     //local storage
@@ -61,6 +64,8 @@ cartDataNull:any=[];
     this.cartItem.emit(this.cartItemList.length);
 
   }
+
+  //Final price calculation for the products in the basket
   getTotalPrice(){
     let grandTotal=0;
     if(localStorage.getItem('localCart')){
@@ -78,6 +83,8 @@ cartDataNull:any=[];
       return 0;
     }
   }
+
+  //Deleting a product in the basket
   removeCartItem(product:any){
     //local storage
     this.cartItemList=JSON.parse(localStorage.getItem('localCart')||'{}')
@@ -93,11 +100,15 @@ cartDataNull:any=[];
     this.getTotalPrice();
     this.cartItem.emit(this.cartItemList.length);
   }
+
+  //Deleting all products in the basket
   removeAllItem(){
     this.cartItemList=[];
     this.productList.next(this.cartItemList);
     localStorage.removeItem('localCart');
   }
+
+  // Adding a quantity to a product
   incQnt(productItem:any):number{
     this.cartItemList= JSON.parse(localStorage.getItem('localCart')||'{}');
      this.cartItemList.forEach((element:any) => {
@@ -115,6 +126,8 @@ cartDataNull:any=[];
      this.grandTotal=this.getTotalPrice();
      return this.grandTotal;
    }
+
+  //Quantity reduction for a product
    decQnt(productItem:any):number{
      this.cartItemList= JSON.parse(localStorage.getItem('localCart')||'{}');
      this.cartItemList.forEach((element:any) => {
@@ -133,6 +146,7 @@ cartDataNull:any=[];
     return this.grandTotal;
    }
 
+    //Calculation of the amount of products in the basket
    getCountCartItem(){
     var cartItem=JSON.parse(localStorage.getItem('localCart')||'{}');
     this.cartItem.emit(cartItem);

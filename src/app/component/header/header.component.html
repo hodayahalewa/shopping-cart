@@ -1,33 +1,13 @@
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <!-- Container wrapper -->
     <div class="container-fluid">
-      <!-- Toggle button -->
-      <button
-        class="navbar-toggler"
-        type="button"
-        data-mdb-toggle="collapse"
-        data-mdb-target="#navbarSupportedContent"
-        aria-controls="navbarSupportedContent"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-      >
-        <i class="fas fa-bars"></i>
-      </button>
-
-      <!-- Collapsible wrapper -->
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <!-- Navbar brand -->
         <div routerLink="/product">
-          <img
-            src="https://mdbcdn.b-cdn.net/img/logo/mdb-transaprent-noshadows.webp"
-            height="15"
-            alt="MDB Logo"
-            loading="lazy"
-          />
+          <i class="fa-solid fa-truck-fast" style="font-size: 40px;cursor:  pointer;"></i>
         </div>
+        <h5 style="margin-left: 15px;">Flipkart</h5>
         <div class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search" [(ngModel)]=searchTerm (keyup)=search($event) aria-label="Search">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search..." [(ngModel)]=searchTerm (keyup)="search($event)" aria-label="Search">
             <span class=" fas fa-search search-icon"></span>
         </div>
       </div>
@@ -37,9 +17,7 @@
         <i  style="font-size: 30px;cursor:  pointer;" class="fas fa-shopping-cart"></i>
         <div  class="badge bg-danger">{{totalItem}}</div>
 
-
       </div>
     </div>
-
   </nav>
-  <!-- Navbar -->
+

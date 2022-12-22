@@ -10,19 +10,15 @@ import { CartComponent } from '../cart/cart.component';
 export class HeaderComponent implements OnInit{
   @Input() totalItem:number=0;
   errorMsg:string | undefined;
-  //public totalItem:number=0;
   public searchTerm:string='';
 
-  constructor(private cartService:CartService){
+  constructor(private cartService:CartService){}
 
-  }
   ngOnInit(): void {
+    //Receiving the amount of products in the basket
     this.cartService.cartItem.subscribe(res=>{
       this.totalItem=res;
     })
-    // this.cartService.getProduct().subscribe(res=>{
-    //  this.totalItem=res.length;
-    // })
   }
   search(event:any){
     this.searchTerm=(event.target as HTMLInputElement).value;
@@ -30,5 +26,6 @@ export class HeaderComponent implements OnInit{
     this.cartService.search.next(this.searchTerm);
 
   }
+
 
 }

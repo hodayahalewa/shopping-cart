@@ -10,22 +10,27 @@ export class ApiService {
 
 productListItem:any
   constructor(private http:HttpClient) { }
-  getProduct(){
-    return this.http.get<any>("https://fakestoreapi.com/products")
-    .pipe(map((res:any)=>{
-      this.productListItem=res;
-      return res;
-    })).pipe(
-      catchError(this.handleError)
-    )
-  }
-  getProductList(){
-    return this.productListItem;
-  }
-  private handleError(error: HttpErrorResponse) {
-    let errorMassage='';
-    errorMassage+=`${error.message}`;
-    return throwError(() => new Error(errorMassage));
-  }
-  }
+
+    //Loading products
+    getProduct(){
+      return this.http.get<any>("https://fakestoreapi.com/products")
+      .pipe(map((res:any)=>{
+        this.productListItem=res;
+        return res;
+      })).pipe(
+        catchError(this.handleError)
+      )
+    }
+
+    getProductList(){
+      return this.productListItem;
+    }
+
+    //If an error occurred while loading products
+    private handleError(error: HttpErrorResponse) {
+      let errorMassage='';
+      errorMassage+=`${error.message}`;
+      return throwError(() => new Error(errorMassage));
+    }
+}
 

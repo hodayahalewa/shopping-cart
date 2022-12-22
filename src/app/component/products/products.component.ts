@@ -13,9 +13,9 @@ public productList:any;
 searchKey:string="";
 errorMassage:any;
 public filterCategory : any;
-  constructor(private api:ApiService,private cartService:CartService){
 
-  }
+constructor(private api:ApiService,private cartService:CartService){}
+
 ngOnInit(): void {
     this.api.getProduct().subscribe(res=>{
       this.productList=res;
@@ -32,10 +32,11 @@ ngOnInit(): void {
 
     });
 
-this.cartService.search.subscribe((val:any)=>{
-  this.searchKey=val;
-})
+    this.cartService.search.subscribe((val:any)=>{
+      this.searchKey=val;
+    })
   }
+  //Adding a product to the cart
   addtoCart(item:any){
     this.cartService.addToCart(item);
   }

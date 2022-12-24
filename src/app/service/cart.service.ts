@@ -21,7 +21,7 @@ export class CartService {
     this.cartItemList.push(...product)
     this.productList.next(product);
   }
-  
+
   //Adding a product to the cart
   addToCart(product:any){
     var index:number=-1;
@@ -106,6 +106,7 @@ export class CartService {
     this.cartItemList=[];
     this.productList.next(this.cartItemList);
     localStorage.removeItem('localCart');
+    this.cartItem.emit(0);
   }
 
   // Adding a quantity to a product
